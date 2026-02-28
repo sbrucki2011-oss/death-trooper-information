@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IMPERIAL DATAPAD // DEATH TROOPER DIVISION</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+        * { box-sizing: border-box; }
+
+        body {
+            background: #000;
+            color: #ddd;
+            font-family: 'VT323', monospace;
+            margin: 0;
+            padding: 12px 10px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .datapad {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            background: #0a0a0a;
+            border: 18px solid #1c1c1c;
+            border-top-color: #333;
+            border-radius: 14px 14px 38px 38px;
+            box-shadow: 0 15px 50px rgba(200, 0, 0, 0.65), inset 0 0 35px rgba(0, 0, 0, 0.9);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .datapad::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(to bottom, transparent 0px, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .header {
+            background: linear-gradient(#2a0000, #1a0000);
+            padding: 14px 16px;
+            text-align: center;
+            border-bottom: 4px solid #c8102e;
+            position: relative;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: clamp(18px, 5.5vw, 26px);
+            color: #c8102e;
+            text-shadow: 0 0 12px #c8102e;
+            letter-spacing: 4px;
+        }
+
+        .status {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            color: #00ff41;
+            font-size: clamp(11px, 3vw, 13px);
+            animation: blink 1.4s infinite;
+        }
+
+        @keyframes blink { 50% { opacity: 0.35; } }
+
+        .nav {
+            background: #111;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            border-bottom: 3px solid #4a0000;
+        }
+
+        .nav button {
+            background: transparent;
+            border: 2px solid #c8102e;
+            color: #c8102e;
+            padding: 10px 18px;
+            font-size: clamp(14px, 4vw, 17px);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.25s;
+            flex: 1 1 45%;
+            max-width: 220px;
+            min-width: 140px;
+            touch-action: manipulation;
+        }
+
+        .nav button:hover, .nav button.active {
+            background: #c8102e;
+            color: #000;
+            box-shadow: 0 0 18px #c8102e;
+        }
+
+        .content {
+            padding: 20px 24px;
+            min-height: 50vh;
+            position: relative;
+        }
+
+        .panel { display: none; }
+
+        #placeholder {
+            display: block;
+            text-align: center;
+            padding: 80px 20px;
+            color: #666;
+            font-size: clamp(18px, 5vw, 24px);
+            line-height: 1.5;
+        }
+
+        .data-header {
+            color: #c8102e;
+            font-size: clamp(20px, 6vw, 24px);
+            margin: 0 0 16px 0;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #c8102e;
+            text-shadow: 0 0 10px #c8102e;
+        }
+
+        .data-header::before { content: "[ "; color: #666; }
+        .data-header::after  { content: " ]"; color: #666; }
+
+        p {
+            font-size: clamp(15px, 4.2vw, 18px);
+            line-height: 1.45;
+            margin: 0 0 14px 0;
+        }
+
+        ul { margin: 0 0 14px 20px; padding-left: 0; list-style-type: none; }
+        ul li:before { content: "→ "; color: #c8102e; }
+
+        .footer {
+            background: #1a0000;
+            padding: 12px;
+            text-align: center;
+            font-size: clamp(11px, 3vw, 13px);
+            color: #666;
+            border-top: 3px solid #c8102e;
+        }
+
+        @media (min-width: 600px) {
+            .datapad { max-width: 560px; border: 24px solid #1c1c1c; border-radius: 18px 18px 45px 45px; }
+            .content { padding: 32px 40px; }
+            .nav button { flex: 0 1 auto; min-width: 160px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="datapad">
+
+        <div class="header">
+            <div class="status">● SECURE TRANSMISSION // LEVEL 7 CLEARANCE</div>
+            <h1>DEATH TROOPER DIVISION</h1>
+        </div>
+
+        <div class="nav">
+            <button onclick="showSection('einleitung', this)">ÜBERSICHT</button>
+            <button onclick="showSection('rolle', this)">ROLLE & AUFGABEN</button>
+            <button onclick="showSection('ausruestung', this)">AUSRÜSTUNG</button>
+            <button onclick="showSection('geschichte', this)">GESCHICHTE</button>
+            <button onclick="showSection('status', this)">ELITE-STATUS</button>
+        </div>
+
+        <div class="content">
+
+            <div id="placeholder">
+                <p style="color:#c8102e; font-size: clamp(20px,6vw,26px); margin-bottom:16px;">● ACCESSING IMPERIAL DATABASE ●</p>
+                <p>DEATH TROOPER DIVISION // LEVEL 7 CLEARANCE</p>
+                <p style="font-size: clamp(14px,4vw,17px); margin-top:60px; color:#444;">
+                    WÄHLEN SIE EINE SEKTION AUS
+                </p>
+            </div>
+
+            <div id="einleitung" class="panel">
+                <h2 class="data-header">ÜBERSICHT</h2>
+                <p>Death Troopers sind die Elite unter den Sturmtruppen des Galaktischen Imperiums. Sie sind spezialisiert auf Stealth, Espionage und maximale Tödlichkeit.</p>
+                <p>Sie operieren in kleinen Einheiten und dienen als Leibwache für hochrangige Imperiale wie Director Krennic, Grand Admiral Thrawn oder Moff Gideon.</p>
+                <p>Ihr Name wurde persönlich von Emperor Palpatine gewählt – als psychologische Waffe, die auf Gerüchte über untote Truppen anspielt.</p>
+            </div>
+
+            <div id="rolle" class="panel">
+                <h2 class="data-header">ROLLE & AUFGABEN</h2>
+                <ul>
+                    <li>Personenschutz für VIPs (Tarkin Initiative, Imperial Intelligence)</li>
+                    <li>Spezialkommandos & verdeckte Operationen</li>
+                    <li>Enforcer und Schocktruppen bei Hochrisiko-Missionen</li>
+                    <li>Stealth- und Infiltrationsaufgaben</li>
+                    <li>Schutz von sensiblen Imperialen Projekten</li>
+                </ul>
+                <p>„Es ist der Trooper, den du nicht siehst, der dich erledigt.“</p>
+            </div>
+
+            <div id="ausruestung" class="panel">
+                <h2 class="data-header">AUSRÜSTUNG</h2>
+                <p>Schwarze, spezialisierte Rüstung mit:</p>
+                <ul>
+                    <li>Reflec-Beschichtung (verzerrt Sensoren & elektromagnetische Wellen)</li>
+                    <li>Biofeedback-Implantate & Leistungsverstärker</li>
+                    <li>Verbesserte Zielsysteme & HUD</li>
+                    <li>Vocal Scrambler (verschlüsselte, nur für DT verständliche Sprache)</li>
+                    <li>Micro-Motion-Sensoren</li>
+                </ul>
+                <p>Bewaffnung: meist E-11D Blasterkarabiner oder schwere Waffen je nach Mission.</p>
+            </div>
+
+            <div id="geschichte" class="panel">
+                <h2 class="data-header">GESCHICHTE</h2>
+                <p>Death Troopers entstanden aus den besten Sturmtruppen-Kandidaten. Nach intensivem Training erhielten sie geheime Augmentationen (medizinisch & chirurgisch), um menschliche Grenzen zu überschreiten.</p>
+                <p>Erste bekannte Einsätze: Schutz von Tarkin-Initiative-Mitgliedern (Scarif, Eadu). Später unter Thrawn, Gideon und anderen.</p>
+                <p>Sie waren maßgeblich an Operationen gegen die Rebellen-Allianz beteiligt.</p>
+            </div>
+
+            <div id="status" class="panel">
+                <h2 class="data-header">ELITE-STATUS</h2>
+                <p>Death Troopers gelten als die tödlichsten und diszipliniertesten Einheiten des Imperiums. Nur die allerbesten Stormtrooper werden rekrutiert und weiter modifiziert.</p>
+                <p>Sie operieren autonom unter Imperial Intelligence oder direkt unter hochrangigen Offizieren. Niederlagen gegen sie sind extrem selten.</p>
+                <p>LEVEL 7 CLEARANCE ERFORDERLICH – WEITERE DATEN NUR FÜR AUTORISIERTE PERSONEN</p>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            IMPERIAL SECURITY CLEARANCE LEVEL 7 // DEATH TROOPER DIVISION // END OF TRANSMISSION
+        </div>
+
+    </div>
+
+    <script>
+        function showSection(sectionId, button) {
+            document.getElementById('placeholder').style.display = 'none';
+            document.querySelectorAll('.panel').forEach(p => p.style.display = 'none');
+            
+            const panel = document.getElementById(sectionId);
+            if (panel) panel.style.display = 'block';
+
+            document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+            if (button) button.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
