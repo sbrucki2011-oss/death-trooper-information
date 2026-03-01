@@ -1,4 +1,4 @@
-e <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -6,9 +6,7 @@ e <!DOCTYPE html>
     <title>IMPERIAL DATAPAD // DEATH TROOPER DIVISION</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
         * { box-sizing: border-box; }
-
         body {
             background: #000;
             color: #ddd;
@@ -18,7 +16,6 @@ e <!DOCTYPE html>
             min-height: 100vh;
             overflow-x: hidden;
         }
-
         .datapad {
             width: 100%;
             max-width: 480px;
@@ -31,7 +28,6 @@ e <!DOCTYPE html>
             overflow: hidden;
             position: relative;
         }
-
         .datapad::before {
             content: '';
             position: absolute;
@@ -40,7 +36,6 @@ e <!DOCTYPE html>
             pointer-events: none;
             z-index: 2;
         }
-
         .header {
             background: linear-gradient(#2a0000, #1a0000);
             padding: 14px 16px;
@@ -48,7 +43,6 @@ e <!DOCTYPE html>
             border-bottom: 4px solid #c8102e;
             position: relative;
         }
-
         .header h1 {
             margin: 0;
             font-size: clamp(18px, 5.5vw, 26px);
@@ -56,7 +50,6 @@ e <!DOCTYPE html>
             text-shadow: 0 0 12px #c8102e;
             letter-spacing: 4px;
         }
-
         .status {
             position: absolute;
             top: 8px;
@@ -65,49 +58,42 @@ e <!DOCTYPE html>
             font-size: clamp(11px, 3vw, 13px);
             animation: blink 1.4s infinite;
         }
-
         @keyframes blink { 50% { opacity: 0.35; } }
-
         .nav {
             background: #111;
             padding: 10px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
+            gap: 8px 10px;
             border-bottom: 3px solid #4a0000;
         }
-
         .nav button {
             background: transparent;
             border: 2px solid #c8102e;
             color: #c8102e;
-            padding: 10px 18px;
-            font-size: clamp(14px, 4vw, 17px);
+            padding: 10px 16px;
+            font-size: clamp(13px, 3.8vw, 16px);
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             transition: all 0.25s;
-            flex: 1 1 45%;
-            max-width: 220px;
-            min-width: 140px;
+            flex: 1 1 30%;
+            max-width: 180px;
+            min-width: 130px;
             touch-action: manipulation;
         }
-
         .nav button:hover, .nav button.active {
             background: #c8102e;
             color: #000;
             box-shadow: 0 0 18px #c8102e;
         }
-
         .content {
-            padding: 20px 24px;
+            padding: 20px 22px;
             min-height: 50vh;
             position: relative;
         }
-
         .panel { display: none; }
-
         #placeholder {
             display: block;
             text-align: center;
@@ -116,7 +102,6 @@ e <!DOCTYPE html>
             font-size: clamp(18px, 5vw, 24px);
             line-height: 1.5;
         }
-
         .data-header {
             color: #c8102e;
             font-size: clamp(20px, 6vw, 24px);
@@ -125,19 +110,15 @@ e <!DOCTYPE html>
             border-bottom: 2px solid #c8102e;
             text-shadow: 0 0 10px #c8102e;
         }
-
         .data-header::before { content: "[ "; color: #666; }
-        .data-header::after  { content: " ]"; color: #666; }
-
+        .data-header::after { content: " ]"; color: #666; }
         p {
             font-size: clamp(15px, 4.2vw, 18px);
             line-height: 1.45;
             margin: 0 0 14px 0;
         }
-
         ul { margin: 0 0 14px 20px; padding-left: 0; list-style-type: none; }
         ul li:before { content: "→ "; color: #c8102e; }
-
         .footer {
             background: #1a0000;
             padding: 12px;
@@ -146,33 +127,30 @@ e <!DOCTYPE html>
             color: #666;
             border-top: 3px solid #c8102e;
         }
-
         @media (min-width: 600px) {
-            .datapad { max-width: 560px; border: 24px solid #1c1c1c; border-radius: 18px 18px 45px 45px; }
+            .datapad { max-width: 580px; border: 24px solid #1c1c1c; border-radius: 18px 18px 45px 45px; }
             .content { padding: 32px 40px; }
-            .nav button { flex: 0 1 auto; min-width: 160px; }
+            .nav button { flex: 0 1 auto; min-width: 150px; max-width: 210px; }
         }
     </style>
 </head>
 <body>
-
     <div class="datapad">
-
         <div class="header">
             <div class="status">● SECURE TRANSMISSION // LEVEL 7 CLEARANCE</div>
             <h1>DEATH TROOPER DIVISION</h1>
         </div>
-
         <div class="nav">
             <button onclick="showSection('einleitung', this)">ÜBERSICHT</button>
             <button onclick="showSection('rolle', this)">ROLLE & AUFGABEN</button>
             <button onclick="showSection('ausruestung', this)">AUSRÜSTUNG</button>
             <button onclick="showSection('geschichte', this)">GESCHICHTE</button>
             <button onclick="showSection('status', this)">ELITE-STATUS</button>
+            <button onclick="showSection('regeln', this)">EINHEITSREGELN</button>
+            <button onclick="showSection('befehlskette', this)">BEFEHLSKETTE</button>
+            <button onclick="showSection('steckbrief', this)">STECKBRIEF DT</button>
         </div>
-
         <div class="content">
-
             <div id="placeholder">
                 <p style="color:#c8102e; font-size: clamp(20px,6vw,26px); margin-bottom:16px;">● ACCESSING IMPERIAL DATABASE ●</p>
                 <p>DEATH TROOPER DIVISION // LEVEL 7 CLEARANCE</p>
@@ -210,7 +188,7 @@ e <!DOCTYPE html>
                     <li>Vocal Scrambler (verschlüsselte, nur für DT verständliche Sprache)</li>
                     <li>Micro-Motion-Sensoren</li>
                 </ul>
-                <p>Bewaffnung: 
+                <p>Bewaffnung:
                     SE-14 Blaster
                     E-11D Blasterkarabiner
                     DLT-19x Scharfschützengewehr</p>
@@ -230,12 +208,61 @@ e <!DOCTYPE html>
                 <p>LEVEL 7 CLEARANCE ERFORDERLICH – WEITERE DATEN NUR FÜR AUTORISIERTE PERSONEN</p>
             </div>
 
-        </div>
+            <div id="regeln" class="panel">
+                <h2 class="data-header">EINHEITSREGELN</h2>
+                <p>Death Trooper Protokoll – absolut bindend. Verstoß = sofortige Exekution oder Dekommissionierung.</p>
+                <ul>
+                    <li>Keine Gefangenen. Keine Überlebenden. Keine Zeugen – es sei denn, explizit anders befohlen.</li>
+                    <li>Kommunikation ausschließlich über vocal scrambler (Kanal Delta-7 oder höher). Klare Sprache ist verboten.</li>
+                    <li>Identität bleibt geheim. Helm darf nur in sicheren Imperialen Einrichtungen Level 6+ abgenommen werden.</li>
+                    <li>Befehle des Großadmirals, Großmoffs haben Priorität 1.</li>
+                    <li>Keine Eigeninitiative außerhalb der Mission Parameter. Improvisation nur zur Erfüllung des Primärziels.</li>
+                    <li>Bei Kompromittierung der Einheit: Selbstterminierung aktivieren (Protokoll Black-9).</li>
+                    <li>Keine Interaktion mit Zivilisten außer zur Informationsgewinnung oder Eliminierung.</li>
+                    <li>Verlust der Rüstung = sofortige Meldung und Isolation bis zur Bergung oder Neutralisierung.</li>
+                </ul>
+                <p style="color:#c8102e; margin-top:20px;">„Schweigen. Präzision. Tod.“ – Codex der Division</p>
+            </div>
 
+            <div id="befehlskette" class="panel">
+                <h2 class="data-header">BEFEHLSKETTE</h2>
+                <p>Imperial Hierarchy – Death Trooper Einsatzleitung</p>
+                <ul>
+                    <li>Großadmiral & Groß Moff</li>
+                    <li>Imperiales Oberkommando</li>
+                    <li>Death Trooper Leitung</li>
+                    <li>Rangstrucktur der DT's</li>
+                </ul>
+                <p style="color:#c8102e; margin-top:16px;">Befehle fließen strikt von oben nach unten. Abweichungen nur bei direkter Autorisierung durch Level-Alpha-Personen (Groß Moff, Großadmiral).</p>
+                <p style="color:#666; font-size:0.9em; margin-top:20px;">
+                </p>
+            </div>
+
+            <div id="steckbrief" class="panel">
+                <h2 class="data-header">STECKBRIEF – DEATH TROOPER</h2>
+                <p><strong>Bezeichnung:</strong> DT / Death Trooper</p>
+                <p><strong>Subjekt-Klasse:</strong> Elite Sturmtruppen-Infanterie (modifiziert)</p>
+                <p><strong>Höhe (Durchschnitt):</strong> 1.88 – 2.05 m (post-augmentation)</p>
+                <p><strong>Gewicht (Durchschnitt):</strong> 105 – 135 kg (inkl. Rüstung & Implantate)</p>
+                <p><strong>Lebenserwartung:</strong> ~38–46 Standardjahre (verkürzt durch Augmentationen)</p>
+                <p><strong>Rekrutierungsprofil:</strong> Stormtrooper mit Top 0.4% Leistung in allen Kategorien</p>
+                <p><strong>Modifikationen (Auswahl):</strong></p>
+                <ul>
+                    <li>Neuronale Leistungsverstärker (Reaktionszeit -40 %)</li>
+                    <li>Muskelfaser-Dichte-Implantate (+62 % Kraft)</li>
+                    <li>Schmerzunterdrückung (Stufe IV)</li>
+                    <li>Verbessertes Nacht- & Restlichtverstärker-Sehen</li>
+                    <li>Subdermale Panzerung (Schlüsselstellen)</li>
+                    <li>Bio-Monitoring & Auto-Stim-Injektoren</li>
+                </ul>
+                <p><strong>Psychologisches Profil:</strong> Extrem hohe Disziplin, nahezu vollständige Emotionsunterdrückung, bedingungslose Loyalität</p>
+                <p><strong>Kampfwertung (ISB-Skala):</strong> 9.7 / 10 (höchste bekannte Bewertung aktiver Einheiten)</p>
+                <p style="color:#c8102e; margin-top:18px;">SUBJEKT IST ALS GEFAHR DER KLASSE ALPHA EINGESTUFT</p>
+            </div>
+        </div>
         <div class="footer">
             IMPERIAL SECURITY CLEARANCE LEVEL 7 // DEATH TROOPER DIVISION // END OF TRANSMISSION
         </div>
-
     </div>
 
     <script>
@@ -245,11 +272,10 @@ e <!DOCTYPE html>
             
             const panel = document.getElementById(sectionId);
             if (panel) panel.style.display = 'block';
-
+            
             document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
             if (button) button.classList.add('active');
         }
     </script>
-
 </body>
 </html>
